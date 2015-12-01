@@ -5,5 +5,5 @@
 FROM lycis/ruby-dev:latest
 MAINTAINER daniel@deder.at
 
-RUN apk add --update -y nodejs
+RUN gem install therubyracer
 RUN gem install dashing
