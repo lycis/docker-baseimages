@@ -1,11 +1,10 @@
-FROM alpine:latest
+#
+# Ruby without developer tools
+#
+
+
+FROM lycis/ruby-dev:latest
 MAINTAINER daniel@deder.at
 
-# install packages
-RUN apk add --update ruby
-
-# no rdoc for default
-RUN echo gem: --no-document > ~/.gemrc
-
-# install gems
-RUN gem install bundler
+# cleanup developer tools
+RUN sh /opt/scripts/del_dev.sh

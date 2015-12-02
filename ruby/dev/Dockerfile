@@ -1,7 +1,20 @@
 #
 # Ruby baseimage with developer tools installed
+# base for all other ruby images
 #
-FROM lycis/ruby:latest
+FROM alpine:latest
 MAINTAINER daniel@deder.at
 
-RUN apk add ruby-dev build-base
+# add default available scripts
+ADD ./scripts/ /opt/scripts/
+
+# install packages
+RUN apk add --update ruby
+
+# no rdoc for default
+RUN echo gem: --no-document > ~/.gemrc
+RUN sh /opt/scripts/add_dev.sh
+
+# install gems
+RUN gem install bundler
+RUN gem install io-console
