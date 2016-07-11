@@ -9,5 +9,5 @@ RUN hexo init
 RUN npm install
 CMD hexo server -p $HEXO_PORT
 
-EXPOSE 80
+EXPOSE 4000
 HEALTHCHECK --interval=5m --timeout=5s CMD curl -f http://localhost/ || exit 1
